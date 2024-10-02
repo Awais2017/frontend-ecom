@@ -1,0 +1,76 @@
+<!-- <div class="form-selection">
+    <button>Category Form</button>
+    <button>Product Form</button>
+</div> -->
+
+<div class="page">
+    <form class="form" *ngIf="formType=='Cat'" [formGroup]="catForm" (ngSubmit)="submitCatForm()">
+        <h2>Category Form</h2>
+
+        <label for="categoryName">Category Name:</label>
+        <input type="text" name="categoryName" formControlName="name" id="categoryName" placeholder="Please enter name">
+        <p class="error-text" *ngIf="catForm.get('name')?.hasError('required')==true && catFormSubmitted">This
+          field is required</p>
+
+        <label for="Password">Description:</label>
+        <textarea name="description" id="description" formControlName="description"  placeholder="Description..."></textarea>
+        <p class="error-text" *ngIf="catForm.get('description')?.hasError('required')==true && catFormSubmitted">This
+          field is required</p>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <form class="form" *ngIf="formType=='Prod'" [formGroup]="prodForm" (ngSubmit)="submitProdForm()">
+        <h2>Product Form</h2>
+        <label for="Password">Category Type:</label>
+        <select name="type" id="cat" formControlName="categoryId" name="cat" id="cat"
+         [required]="prodFormSubmitted" >
+            <option value="">Select Category</option>
+            <option *ngFor="let cat of categoires" [value]="cat.id">{{cat.name}}</option>
+        </select>
+        <p class="error-text" *ngIf="prodForm.get('categoryId')?.hasError('required')==true && prodFormSubmitted">This
+          field is required</p>
+        <label for="productName">Product Name:</label>
+        <input type="text" name="productName" id="productName" formControlName="name"
+        [required]="prodFormSubmitted" placeholder="Please enter name">
+        <p class="error-text" *ngIf="prodForm.get('name')?.hasError('required')==true && prodFormSubmitted">This
+          field is required</p>
+
+        <label for="productName">Amount:</label>
+        <input type="number" name="amount" id="amount" formControlName="amount"
+        [required]="prodFormSubmitted" placeholder="Please enter amount">
+        <p class="error-text" *ngIf="prodForm.get('amount')?.hasError('required')==true && prodFormSubmitted">This
+          field is required</p>
+
+        <label for="productName">Quantity:</label>
+        <input type="number" name="quantity" formControlName="quantity"
+        [required]="prodFormSubmitted" id="quantity" placeholder="Please enter quantity">
+        <p class="error-text" *ngIf="prodForm.get('quantity')?.hasError('required')==true && prodFormSubmitted">This
+          field is required</p>
+
+        <label for="Password">Image Type:</label>
+        <select name="type" id="cat" formControlName="imageType" name="imageType" (change)="onImageTypeChange()" id="imageType"
+        [required]="prodFormSubmitted"   >
+           <option value="" disabled>Select Image Type</option>
+           <option value="1">File</option>
+           <option value="2">Url</option>
+       </select>
+       <p class="error-text" *ngIf="prodForm.get('imageType')?.hasError('required')==true && prodFormSubmitted">This
+        field is required</p>
+
+        <label for="file" *ngIf="isUploadFile">Upload Image:</label>
+        <input type="file" *ngIf="isUploadFile" name="file" id="file" (change)="onDpSelect($event)">
+
+        <label for="url" *ngIf="!isUploadFile">Image Url:</label>
+        <input type="text" name="url" id="url" *ngIf="!isUploadFile" formControlName="imageUrl" placeholder="Please enter url">
+        <p class="error-text" *ngIf="prodForm.get('imageUrl')?.hasError('required')==true && prodFormSubmitted">This
+          field is required</p>
+
+        <label for="Password">Description:</label>
+        <textarea name="description" formControlName="description"  id="description"  [required]="prodFormSubmitted" placeholder="Description..."></textarea>
+        <p class="error-text" *ngIf="prodForm.get('description')?.hasError('required')==true && prodFormSubmitted">This
+          field is required</p>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>

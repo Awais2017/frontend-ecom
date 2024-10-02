@@ -1,0 +1,20 @@
+<div class="page">
+    <div class="cart">
+        <h2>Cart</h2>
+        <div class="line-h"></div>
+
+        <div class="product-item" *ngFor="let p of cartItems">
+            <div class="product">Product: {{p.name}}</div>
+            <div class="other-items">
+                <span>Price: {{numberWithCommas(p.amount)}}</span>
+                <span>Quantity: <input type="number" [max]="p.quantity" min="1" [(ngModel)]="p.noOfItems"></span>
+                <span>Subtotal: {{numberWithCommas(p.amount* p.noOfItems)}}</span>
+            </div>
+        </div>
+        <div class="line-h"></div>
+        <div class="product-item">
+          <span class="other-items"> Total Amount: {{numberWithCommas(getTotalAmount())}}</span>
+        </div>
+        <button (click)="onContinue()">Continue to Payment</button>
+    </div>
+</div>

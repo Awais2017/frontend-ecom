@@ -1,0 +1,9 @@
+<div class="navbar">
+  <a>Admin</a>
+  <a style="float: right;" (click)="onLogOut()">LogOut</a>
+</div>
+<div class="form-selection" style="margin-top: 200px;">
+  <button (click)="formSelection('Cat')">Category Form</button>
+  <button (click)="formSelection('Prod')">Product Form</button>
+</div>
+<app-prod-cat (onCatFormSubmit)="catFormSubmit($event)" [formType]="formType"></app-prod-cat>

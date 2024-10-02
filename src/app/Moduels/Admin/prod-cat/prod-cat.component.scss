@@ -1,0 +1,63 @@
+.form-selection{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    button{
+        width: 200px;
+    }
+}
+
+.page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 100vh;
+    .form{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        width: 400px;
+        padding: 10px;
+        border-radius: 15px;
+        background: black;
+        color: white;
+        h2{
+            text-align: center;
+            color: green;
+        }
+    }
+}
+
+input, select{
+    background: gray;
+    padding: 10px;
+    border-radius: 8px;
+    &::placeholder{
+        color: white;
+    }
+}
+
+textarea{
+    padding: 10px;
+    border-radius: 8px;
+    min-height: 100px;
+    background: gray;
+    &::placeholder{
+        color: white;
+    }
+}
+
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: green;
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.error-text{
+  color: red;
+}

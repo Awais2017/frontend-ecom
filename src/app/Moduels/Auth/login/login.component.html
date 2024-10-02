@@ -1,0 +1,28 @@
+<div class="page">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <h2>Login</h2>
+
+        <label for="userName">Email:</label>
+        <input type="text" name="userName" id="userName" placeholder="Please enter name" formControlName="email" name="emailInput" id="emailInput" type="email" placeholder="Email ID*"
+        [required]="formSubmitted">
+        <p class="error-text" *ngIf="loginForm.get('email')?.hasError('required')==true && formSubmitted ">This
+          field is required</p>
+        <p class="error-text" *ngIf="loginForm.get('email')?.hasError('email')">Email is incorrect</p>
+
+        <label for="Password">Password:</label>
+        <input type="Password"  formControlName="password" name="passwordInput" id="passwordInput" type="password"
+        placeholder="Password*" [required]="formSubmitted">
+        <p class="error-text" *ngIf="loginForm.get('password')?.hasError('required')==true && formSubmitted ">This
+          field is required</p>
+        <label for="Password">User Type:</label>
+        <select name="type" id="type" formControlName="role" name="roleInput" id="roleInput"
+         [required]="formSubmitted" >
+            <option value="">Select Type</option>
+            <option value="1">Admin</option>
+            <option value="2">Guest</option>
+        </select>
+        <p class="error-text" *ngIf="loginForm.get('role')?.hasError('required')==true && formSubmitted ">This
+          field is required</p>
+        <button type="submit">Submit</button>
+    </form>
+</div>

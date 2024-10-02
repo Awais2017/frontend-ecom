@@ -1,0 +1,25 @@
+<div class="navbar">
+  <a>Guest User</a>
+  <a style="float: right;" (click)="onLogOut()">LogOut</a>
+</div>
+
+<div class="page">
+    <div class="prod-list">
+        <div class="prod-item" *ngFor="let product of products">
+            <!-- <img src="assets/shoe.jpg" alt=""> -->
+            <img [src]="product.imageUrl" alt="images">
+            <div class="inner-item">
+                <span>Name: {{product.name}}</span>
+                <span>Description: {{product.description}}</span>
+                <span>Price: Rs {{numberWithCommas(product.amount)}}</span>
+                <span>Quantity {{numberWithCommas(product.quantity)}}</span>
+                <span>Category:  {{numberWithCommas(product.category)}}</span>
+                <button (click)="onAddCart(product)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div [hidden]="!showCart">
+  <app-cart (refreshResults)="onRefresh()" ></app-cart>
+</div>
